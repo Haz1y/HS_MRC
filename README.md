@@ -21,10 +21,10 @@ WindowsX = 78
 WindowsY = 78
 WindowsWidth = 446
 WindowsHeight = 526
+
+SetWindowPos(hwnd, HWND_TOPMOST, 365, 292, 548, 439, SWP_SHOWWINDOW);
 ```
 
 
 
-参考
-
-https://nga.178.com/read.php?tid=11838545
+编写参考 https://nga.178.com/read.php?tid=11838545
