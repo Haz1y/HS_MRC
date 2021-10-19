@@ -1,4 +1,6 @@
 # encoding: UTF-8
+# refer: https://nga.178.com/read.php?tid=11838545
+# python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python pyautogui numpy
 
 import re
 import pyautogui
@@ -67,8 +69,8 @@ def gaming():
         while True:
             line = log.readline()
             if line:
+                flagTimesleep = 0
                 if re.findall(r"tag=STEP value=MAIN_ACTION", line):
-                    flagTimesleep = 0
                     time.sleep(10)
                     logLine = log.readline()
                     while logLine:
@@ -81,7 +83,6 @@ def gaming():
                     time.sleep(1)
                     movClick(861, 506)
                 elif re.findall(r"tag=STEP value=FINAL_GAMEOVER", line):
-                    flagTimesleep = 0
                     time.sleep(3)
                     logLine = log.readline()
                     while logLine:
@@ -92,8 +93,28 @@ def gaming():
             else:
                 time.sleep(1)
                 flagTimesleep += 1
-                print(flagTimesleep)
-            if flagTimesleep > 180:
+                if flagTimesleep % 30 == 0:
+                    print(flagTimesleep/30)
+            if flagTimesleep > 90:
+                flagTimesleep = 0
+                movClick(572, 501)
+                movClick(632, 436)
+                time.sleep(1)
+                movClick(632, 436)
+                movClick(861, 506)
+                time.sleep(1)
+                movClick(563, 514)
+                movClick(708, 641)
+                movClick(563, 514)
+                movClick(708, 641)
+                time.sleep(5)
+                movClick(586, 512)
+                movClick(511, 522)
+                movClick(481, 514)
+                movClick(455, 521)
+                movClick(828, 650)
+                movClick(828, 650, 0.1)
+                time.sleep(3)
                 movClick(861, 506)
                 movClick(828, 650)
             if flagGameover >= 1:
@@ -102,10 +123,13 @@ def gaming():
 
 
 if __name__ == '__main__':
+    print(time.time())
     while True:
+        time0= time.time()
         img = screenshot()
         res = compare(img)
         movClick(466, 460)
+        time.sleep(1)
         movClick(828, 650)
         time.sleep(3)
         movClick(443, 453)
@@ -131,9 +155,9 @@ if __name__ == '__main__':
             movClick(563, 514)
             movClick(708, 641)
             time.sleep(5)
+        movClick(828, 650)
         movClick(565, 400)
-        movClick(828, 650, 0.5)
-        movClick(828, 650, 0.1)
+        movClick(828, 650)
         gaming()
         time.sleep(13)
         movClick(828, 650, 0.1)
@@ -151,5 +175,5 @@ if __name__ == '__main__':
         movClick(654, 549)
         time.sleep(8)
         movClick(631, 647)
-        time.sleep(5)
-        print("done")
+        time.sleep(7)
+        print(str((time.time()-time0)/60.0)+"\tdone")
