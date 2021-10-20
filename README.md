@@ -21,11 +21,6 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple opencv-python pyautogui 
 屏幕分辨率 1280*1024
 
 ```
-WindowsX = 78
-WindowsY = 78
-WindowsWidth = 446
-WindowsHeight = 526
-
 SetWindowPos(hwnd, HWND_TOPMOST, 365, 292, 548, 439, SWP_SHOWWINDOW);
 ```
 
