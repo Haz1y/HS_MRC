@@ -74,7 +74,7 @@ def gaming():
                     time.sleep(10)
                     logLine = log.readline()
                     while logLine:
-                        if re.findall(r"tag=STEP value=FINAL_GAMEOVER", line):
+                        if re.findall(r"tag=STEP value=FINAL_GAMEOVER", logLine):
                             flagGameover += 1
                         logLine = log.readline()
                     movClick(572, 501)
@@ -86,7 +86,7 @@ def gaming():
                     time.sleep(3)
                     logLine = log.readline()
                     while logLine:
-                        if re.findall(r"tag=STEP value=FINAL_GAMEOVER", line):
+                        if re.findall(r"tag=STEP value=FINAL_GAMEOVER", logLine):
                             flagGameover += 1
                         logLine = log.readline()
                     flagGameover += 1
